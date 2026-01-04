@@ -39,6 +39,14 @@
         "dateofbirth":"1995-03-05",
         "state":"Illinois",
         "status":"Inactive"
+    },
+    {
+        "id":6,
+        "name":"Olivia Davis",
+        "gender":"Female",
+        "dateofbirth":"1991-09-18", 
+        "state":"Ohio",
+        "status":"Active"
     }
 ]
 }

@@ -77,7 +77,7 @@ export default function EmployeeTable(props) {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>{table}</tbody>
+                {props.employees.length > 0 ? <tbody>{table}</tbody> : <tbody><tr><td colSpan="7" style={{textAlign:"center"}}>No employees found</td></tr></tbody>    }
             </table>
         </div>
     )
