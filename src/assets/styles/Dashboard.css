@@ -1,0 +1,52 @@
+*{
+    border:0;
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-main{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    min-height: 100vh;
+}
+
+.dashboard-main .header{
+    background-color:#2A7B9B;
+    color:#fff;
+    padding:20px;
+    text-align:center;
+}
+
+.dashboard-main .count-widgets{
+    display:flex;
+    justify-content:space-evenly;
+    margin-top:20px;
+}
+
+.dashboard-main .count-widgets .count-box{
+    background-color:#fff;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    width:230px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.dashboard-main .count-widgets .count-box span{
+    font-size:5rem;
+    font-weight:bold;
+    color:#2A7B9B;
+}
+
+.dashboard-main .count-widgets .count-box h3{
+    margin-top: 5px;
+}
+
+    

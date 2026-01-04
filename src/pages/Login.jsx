@@ -19,6 +19,7 @@ export default function Login() {
             setError('Please enter both username and password.')
             return
         }
+
         setIsSubmitting(true);
         
         const isAuth = authenticate(username, password)
@@ -28,6 +29,8 @@ export default function Login() {
         else{
             setError('Invalid username or password.')
             setIsSubmitting(false);
+            setUsername('');
+            setPassword('');
             return
         }
     }

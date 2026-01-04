@@ -1,0 +1,42 @@
+export const Employee=[
+    {
+        id:1,
+        name:"John Doe",
+        gender:"Male",
+        dateofbirth:"1990-01-15",
+        state:"California",
+        status:"Active"
+    },
+    {
+        id:2,
+        name:"Jane Smith",
+        gender:"Female",
+        dateofbirth:"1985-05-30",
+        state:"New York",
+        status:"Inactive"
+    },
+    {
+        id:3,
+        name:"Michael",
+        gender:"Male",
+        dateofbirth:"1992-07-22",
+        state:"Texas",
+        status:"Active"
+    },
+    {
+        id:4,
+        name:"Emily Johnson",
+        gender:"Female",
+        dateofbirth:"1988-11-10",
+        state:"Florida",
+        status:"Active"
+    },
+    {
+        id:5,
+        name:"David Brown",
+        gender:"Male",
+        dateofbirth:"1995-03-05",
+        state:"Illinois",
+        status:"Inactive"
+    }
+]
