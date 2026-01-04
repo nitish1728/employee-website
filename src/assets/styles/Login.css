@@ -1,0 +1,114 @@
+
+*{
+    border:0;
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+   background: #2A7B9B;
+   background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+}
+
+.login-main
+{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.main{
+    width:400px;
+    height:500px;
+    background-color:#fff;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    padding:30px;
+}
+.login-form
+{
+    display:flex;
+    flex-direction:column;
+}
+
+.login-form h2
+{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+    text-transform: uppercase;
+}
+
+.login-form img
+{
+    display:block;
+    margin:0 auto 20px auto;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+}
+.login-form form .input-group
+{
+    margin-bottom:15px;
+    display:flex;
+    flex-direction:column;
+    position: relative;
+}
+
+.login-form form .input-group label
+{
+    margin-bottom:5px;
+    color:#555;
+    font-size:17px;
+}
+.login-form form .input-group input
+{
+    padding:10px;
+    padding-left: 30px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:14px; 
+    
+}
+
+.login-form form .input-group img
+{
+    width:20px;
+    height:20px;
+    position:absolute;
+    left:5px;
+    top:38px;
+    cursor:pointer;
+    pointer-events: none;
+    color: #666;
+}
+
+.login-form form button
+{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    background: #2A7B9B;
+   background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%);
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:10px;
+    transition: background-color 0.3s ease;
+}
+
+.login-form form .input-group input input:focus {
+  border-color: #4CAF50;
+}
+.error{
+    color:red;
+    font-size:14px;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
