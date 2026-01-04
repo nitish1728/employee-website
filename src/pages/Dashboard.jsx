@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "../assets/styles/Dashboard.css";
 import EmployeeTable from "../components/EmployeeTable.jsx";
 import searchIcon from "../assets/images/search-icon.png";
+import Swal from "sweetalert2";
 
 export default function Dashboard() {
   const [employees, setEmployees] = useState([]);
@@ -21,7 +22,33 @@ export default function Dashboard() {
         setFilteredEmployees(data);
       });
   }, []);
+  
+  const deleteEmployee = (id) => {
+    Swal.fire({
+        title: "Are you sure?",
+        text: `This employee ${id} will be permanently deleted!`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "Cancel"
+    }).then((result) => {
+        if (result.isConfirmed) {
+        const updatedEmployees = employees.filter(emp => emp.id !== id);
+        setEmployees(updatedEmployees);
+        setFilteredEmployees(updatedEmployees);
 
+        Swal.fire({
+            icon: "success",
+            title: "Deleted!",
+            text: `Employee ${id} has been deleted.`,
+            timer: 1500,
+            showConfirmButton: false
+        });
+        }
+    });
+  };
   useEffect(() => {
     let result = [...employees];
 
@@ -59,6 +86,7 @@ export default function Dashboard() {
     <div className="dashboard-main">
       {showFilter && (
         <div className="filter-popup">
+          <div className="closeBtn" onClick={() => setShowFilter(false)}>✖</div>
           <h3>Filter by Status</h3>
           <div className="filter-options">
             <label>
@@ -152,7 +180,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <EmployeeTable employees={filteredEmployees} />
+      <EmployeeTable employees={filteredEmployees} onDelete={deleteEmployee} />
     </div>
   );
 }

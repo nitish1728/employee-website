@@ -55,7 +55,7 @@ export default function EmployeeTable(props) {
                 <td>
                     <div className='actions'>
                         <button className='edit'>Edit</button>
-                        <button className='delete'>Delete</button>
+                        <button className='delete' onClick={() => props.onDelete(emp.id)}>Delete</button>
                         <button className='print' onClick={() => printEmployee(emp)}>Print</button>
                     </div>
                 </td>
