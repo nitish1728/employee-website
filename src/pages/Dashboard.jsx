@@ -15,6 +15,104 @@ export default function Dashboard() {
   const [filterGender, setFilterGender] = useState("");
   const [filterStatus, setFilterStatus] = useState("");
 
+  const [showPage,setshowPage] = useState(false);
+  const [showUpdatePage,setshowUpdatePage] = useState(false);
+
+  const [form, setForm] = useState({
+    name: "",
+    image: "",
+    gender: "Male",
+    dateofbirth: "",
+    state: "",
+    status: "Active"
+  });
+
+  function onClose(){
+    setForm({
+        name: "",
+        image: "",
+        gender: "Male",
+        dateofbirth: "",
+        state: "",
+        status: "Active"
+      });
+    setshowPage(false);
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prev => ({
+        ...prev,
+        [name]: value
+    }));
+ };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setForm(prev => ({ ...prev, image: reader.result }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+        if (form.id) {
+        await fetch(`http://localhost:3000/Employee/${form.id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form)
+        });
+
+        setEmployees(prev =>
+            prev.map(emp => (emp.id === form.id ? form : emp))
+        );
+        setFilteredEmployees(prev =>
+            prev.map(emp => (emp.id === form.id ? form : emp))
+        );
+
+        Swal.fire({
+            icon: "success",
+            title: "Employee Updated",
+            text: `${form.name} updated successfully`,
+            timer: 1500,
+            showConfirmButton: false
+        });
+        }
+        else {
+        const response = await fetch("http://localhost:3000/Employee", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({...form,id:employees.length>0 ? "EMP"+employees.length +Date.now() : "EMP1"+Date.now })
+        });
+
+        const savedEmployee = await response.json();
+
+        setEmployees(prev => [...prev, savedEmployee]);
+        setFilteredEmployees(prev => [...prev, savedEmployee]);
+
+        Swal.fire({
+            icon: "success",
+            title: "Employee Added",
+            text: `${savedEmployee.name} added successfully`,
+            timer: 1500,
+            showConfirmButton: false
+        });
+        }
+
+        onClose();
+    } catch (error) {
+        Swal.fire("Error", "Operation failed", "error");
+    }
+    };
+
+
+  
   useEffect(() => {
     fetch("http://localhost:3000/Employee")
       .then(res => res.json())
@@ -37,6 +135,11 @@ export default function Dashboard() {
     }).then((result) => {
         if (result.isConfirmed) {
         const updatedEmployees = employees.filter(emp => emp.id !== id);
+
+        fetch(`http://localhost:3000/Employee/${id}`, {
+            method: "DELETE"
+        });
+
         setEmployees(updatedEmployees);
         setFilteredEmployees(updatedEmployees);
 
@@ -107,6 +210,22 @@ export default function Dashboard() {
     setFilteredEmployees(updatedEmployees);
   }
 
+  function addEmployee(){
+    setForm({
+        name: "",
+        image: "",
+        gender: "Male",
+        dateofbirth: "",
+        state: "",
+        status: "Active"
+    });
+    setshowPage(true);
+    }   
+
+    function editEmployee(emp) {
+        setForm(emp);
+        setshowPage(true);
+    }
   return (
     <div className="dashboard-main">
       {showFilter && (
@@ -175,7 +294,7 @@ export default function Dashboard() {
         <div className="header-main">
             <h2>Employee Dashboard</h2>
             <div className="header-button">
-                <button>Add Employee</button>
+                <button onClick={addEmployee}>Add Employee</button>
                 <button onClick={handleLogout}>Log Out</button>
             </div>
         </div>
@@ -211,7 +330,92 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <EmployeeTable employees={filteredEmployees} onDelete={deleteEmployee} onStatusChange={onStatusChange} />
+      <EmployeeTable employees={filteredEmployees} onDelete={deleteEmployee} onStatusChange={onStatusChange} onEdit={editEmployee} />
+
+      {showPage && <div className="overlay">
+        <div className="sidepage">
+          <div className="closeBtn" onClick={() => onClose()}>✖</div>
+            <h2>{form.id ? "Update Employee" : "Add Employee"}</h2>
+            <div className="sidepage-content">
+                <form onSubmit={handleSubmit}>
+                    <div className="input-group">
+                    <label>Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                    />
+                    </div>
+
+                <div className="input-group">
+                <label>Image</label>
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                />
+                {form.image && (
+                    <>
+                        <label>Preview</label>
+                        <img
+                        src={form.image}
+                        alt="Preview"
+                        className="image-preview" width={200} height={200}
+                        />
+                    </>
+                )}
+                </div>
+
+                <div className="input-group">
+                <label>Gender</label>
+                <select name="gender" value={form.gender} onChange={handleChange}>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                </div>
+
+                <div className="input-group">
+                <label>Date of Birth</label>
+                <input
+                    type="date"
+                    name="dateofbirth"
+                    value={form.dateofbirth}
+                    onChange={handleChange}
+                    required
+                />
+                </div>
+
+                <div className="input-group">
+                <label>State</label>
+                <input
+                    type="text"
+                    name="state"
+                    value={form.state}
+                    onChange={handleChange}
+                    required
+                />
+                </div>
+
+                <div className="input-group">
+                <label>Status</label>
+                <select name="status" value={form.status} onChange={handleChange}>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+                </div>
+
+                <button type="submit">
+                    {form.id ? "Update Employee" : "Add Employee"}
+                </button>
+            </form>
+        </div>
+
+        </div>
+        
+      </div>
+      }
     </div>
   );
 }

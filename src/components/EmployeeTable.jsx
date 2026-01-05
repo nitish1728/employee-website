@@ -30,7 +30,7 @@ export default function EmployeeTable(props) {
         <body>
             <h2>Employee Details</h2>
             <p><strong>ID:</strong> ${emp.id}</p>
-            img src="${emp.image}" alt="Employee Image" width="100" height="100"/>
+            <img src="${emp.image}" alt="Employee Image" width="100" height="100"/>
             <p><strong>Name:</strong> ${emp.name}</p>
             <p><strong>Gender:</strong> ${emp.gender}</p>
             <p><strong>DOB:</strong> ${emp.dateofbirth}</p>
@@ -63,7 +63,7 @@ export default function EmployeeTable(props) {
                 </td>
                 <td>
                     <div className='actions'>
-                        <button className='edit'>Edit</button>
+                        <button className='edit' onClick={() => props.onEdit(emp)}>Edit</button>
                         <button className='delete' onClick={() => props.onDelete(emp.id)}>Delete</button>
                         <button className='print' onClick={() => printEmployee(emp)}>Print</button>
                     </div>

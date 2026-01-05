@@ -161,4 +161,81 @@
     font-weight:600;
 }
 
+.overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+.overlay-hidden{
+    display:none;
+}
+
+.overlay-visible{
+    display:block;
+}
+
+.overlay .sidepage{
+    position: fixed;
+    top:10%;
+    left:30%;
+    width:40%;
+    height:80%;
+    background-color:#fff;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+    padding:20px;
+    overflow-y:auto;
+}
+
+.overlay .sidepage h2{
+    margin-bottom:20px;
+    color:#333;
+}
+
+.overlay .sidepage .closeBtn{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:25px;
+    font-weight:bold;
+    color:black;
+    cursor:pointer;
+}
+
+.overlay .sidepage .sidepage-content form .input-group{
+    margin-bottom:15px;
+    display:flex;
+    flex-direction:column;
+}
+
+.overlay .sidepage .sidepage-content form .input-group label{
+    margin-bottom:5px;
+    color:#555;
+    font-size:17px;
+}
+
+.overlay .sidepage .sidepage-content form .input-group input,
+.overlay .sidepage .sidepage-content form .input-group select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:14px; 
+}
+
+.overlay .sidepage .sidepage-content form button{
+    padding:10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #2A7B9B;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+
 
