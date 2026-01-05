@@ -77,7 +77,7 @@ npx json-server --watch db.json --port 3000
 API endpoint:
 http://localhost:3000/Employee
 
-Run the React App
+Run the React App using the below command in the first terminal
 
 ```bash
 npm run start
