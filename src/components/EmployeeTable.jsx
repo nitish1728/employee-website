@@ -30,6 +30,7 @@ export default function EmployeeTable(props) {
         <body>
             <h2>Employee Details</h2>
             <p><strong>ID:</strong> ${emp.id}</p>
+            img src="${emp.image}" alt="Employee Image" width="100" height="100"/>
             <p><strong>Name:</strong> ${emp.name}</p>
             <p><strong>Gender:</strong> ${emp.gender}</p>
             <p><strong>DOB:</strong> ${emp.dateofbirth}</p>
@@ -47,6 +48,7 @@ export default function EmployeeTable(props) {
         return(
             <tr key={emp.id}>
                 <td>{emp.id}</td>
+                <td><img src={emp.image} alt="Employee Image" width="100" height="100"/></td>
                 <td>{emp.name}</td>
                 <td>{emp.gender}</td> 
                 <td>{emp.dateofbirth}</td>
@@ -76,6 +78,7 @@ export default function EmployeeTable(props) {
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Gender</th>
                         <th>Date of Birth</th>
@@ -84,7 +87,7 @@ export default function EmployeeTable(props) {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                {props.employees.length > 0 ? <tbody>{table}</tbody> : <tbody><tr><td colSpan="7" style={{textAlign:"center"}}>No employees found</td></tr></tbody>    }
+                {props.employees.length > 0 ? <tbody>{table}</tbody> : <tbody><tr><td colSpan="8" style={{textAlign:"center"}}>No employees found</td></tr></tbody>    }
             </table>
         </div>
     )

@@ -18,7 +18,6 @@ table th, table td {
     padding: 15px;
     text-align: left;
     cursor: pointer;
-    max-width: 160px;
 }
 
 table th {

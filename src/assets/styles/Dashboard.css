@@ -18,7 +18,10 @@
     background-color:#2A7B9B;
     color:#fff;
     padding:20px;
-    text-align:center
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .dashboard-main .count-widgets{
@@ -138,3 +141,24 @@
     color:black;
     cursor:pointer;
 }
+
+.header-main{
+    display: flex;
+    align-items: center;
+    min-width:60%;
+    justify-content: space-between;
+}
+
+.header-main button{
+    padding:10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #5fa1bb;
+    font-size: 15px;
+    margin-right: 10px;
+    font-weight:600;
+}
+
+

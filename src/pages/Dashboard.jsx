@@ -95,6 +95,14 @@ export default function Dashboard() {
         }
         return emp;
     });
+    fetch(`http://localhost:3000/Employee/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            status: isActive ? "Active" : "Inactive"
+        })
+    });
+
     setEmployees(updatedEmployees);
     setFilteredEmployees(updatedEmployees);
   }
@@ -164,7 +172,13 @@ export default function Dashboard() {
       )}
 
       <div className="header">
-        <h2>Employee Dashboard</h2>
+        <div className="header-main">
+            <h2>Employee Dashboard</h2>
+            <div className="header-button">
+                <button>Add Employee</button>
+                <button onClick={handleLogout}>Log Out</button>
+            </div>
+        </div>
       </div>
 
       <div className="employee-search">
