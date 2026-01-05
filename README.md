@@ -1,16 +1,87 @@
-# React + Vite
+# 👩‍💼 Employee Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and clean **Employee Management Dashboard** built with **React** and **JSON Server**.  
+This project demonstrates real-world CRUD operations using modern React patterns.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- ➕ Add new employees using a side panel
+- ✏️ Edit employee details using the same form
+- 🗑 Delete employees with confirmation
+- 🔄 Toggle employee status (Active / Inactive)
+- 🔍 Search employees by name
+- 🎯 Filter employees by gender and status
+- 🖼 Upload and preview employee images
+- 🖨 Print individual employee details
+- 💾 Persistent data using JSON Server
+- 🚪 Logout support (mock authentication)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+- React (Functional Components & Hooks)
+- TypeScript
+- CSS (Custom styling)
+
+### Backend (Mock)
+- JSON Server (REST API simulation)
+
+### Libraries
+- SweetAlert2 (alerts and confirmations)
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally.
+
+---
+
+### ✅ Prerequisites
+
+Make sure you have:
+- Node.js (v16 or above)
+- npm or yarn
+
+---
+
+### 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+cd employee-management-dashboard
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Setup JSON Server
+
+Open another terminal in your coding tool
+
+Setup JSON Server using the below command
+
+```bash
+npx json-server --watch db.json --port 3000
+```
+
+API endpoint:
+http://localhost:3000/Employee
+
+Run the React App
+
+```bash
+npm run start
+```
+Open the exposed localhost in browser eg:- http://localhost:5173/
+
+
