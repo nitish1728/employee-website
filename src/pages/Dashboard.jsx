@@ -3,6 +3,7 @@ import "../assets/styles/Dashboard.css";
 import EmployeeTable from "../components/EmployeeTable.jsx";
 import searchIcon from "../assets/images/search-icon.png";
 import Swal from "sweetalert2";
+import { logout } from "../javascript/authentication"
 
 export default function Dashboard() {
   const [employees, setEmployees] = useState([]);
@@ -81,6 +82,22 @@ export default function Dashboard() {
     setFilteredEmployees(employees);
     setShowFilter(false);
   };
+
+  function handleLogout() {     
+    logout();
+    window.location.href = "/";
+  }
+
+  function onStatusChange(id, isActive) {
+    const updatedEmployees = employees.map(emp => {
+      if (emp.id === id) {
+        return { ...emp, status: isActive ? "Active" : "Inactive" };
+        }
+        return emp;
+    });
+    setEmployees(updatedEmployees);
+    setFilteredEmployees(updatedEmployees);
+  }
 
   return (
     <div className="dashboard-main">
@@ -180,7 +197,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <EmployeeTable employees={filteredEmployees} onDelete={deleteEmployee} />
+      <EmployeeTable employees={filteredEmployees} onDelete={deleteEmployee} onStatusChange={onStatusChange} />
     </div>
   );
 }

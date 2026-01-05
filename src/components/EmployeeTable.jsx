@@ -51,7 +51,14 @@ export default function EmployeeTable(props) {
                 <td>{emp.gender}</td> 
                 <td>{emp.dateofbirth}</td>
                 <td>{emp.state}</td>
-                <td>{emp.status}</td>
+                <td>
+                    <div className="status-checkbox">
+                        <label className="switch">
+                            <input type="checkbox" checked={emp.status === "Active"} onChange={(e)=>props.onStatusChange(emp.id, e.target.checked)}/>
+                            <span className="slider"></span>
+                        </label>
+                    </div>
+                </td>
                 <td>
                     <div className='actions'>
                         <button className='edit'>Edit</button>

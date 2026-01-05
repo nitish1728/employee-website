@@ -16,7 +16,7 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!username || !password) {
-            setError('Please enter both username and password.')
+            setError('Please enter both username and password')
             return
         }
 
