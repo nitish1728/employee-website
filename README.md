@@ -84,4 +84,8 @@ npm run start
 ```
 Open the exposed localhost in browser eg:- http://localhost:5173/
 
+Login Details:-
+Username: admin
+Password: password123
+
 
